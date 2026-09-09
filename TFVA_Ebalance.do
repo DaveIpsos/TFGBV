@@ -410,7 +410,7 @@ local blue   "0 114 178"
 marginsplot, ///
     title("") ///
     xtitle("Lifetime exposure to sexual violence") ytitle("") ///
-	subtitle("(A) Probability of CTFGBV", position(11) ring(0) justification(right)) ///
+	subtitle("(A) Probability of RTFGBV", position(11) ring(0) justification(right)) ///
     recast(scatter) ///
     ciopts(recast(rspike) lwidth(medthick) lcolor("`blue'")) ///
     plotopts(msymbol(O) msize(large) mfcolor("`blue'") mlcolor(white) mlwidth(vthin)) ///
@@ -425,6 +425,7 @@ marginsplot, ///
 *******************************************************************************************
 **********Examing non-recursive association between sexual violence and TFVA***************
 *******************************************************************************************
+svyset psu [pweight=wt], strata(strata) singleunit(centered)
 
 **Main outcome: Ever experienced TFVA
 fre sd21a sd21b sd21c sd21d if pop==1
@@ -686,7 +687,7 @@ graph combine plot_sexualviolence plot_lsv plot_tfva, ///
     rows(1) cols(3) ///
     graphregion(color(white)) ///
     imargin(tiny) ///
-	note("CTFGBV = Current experience of TFGBV; LTFGBV = Lifetime experience of TFGBV; LSV = Lifetime experience of sexual violence", color(gs8) size(vsmall)) ///
+	note("RTFGBV = Recent experience of TFGBV; LTFGBV = Lifetime experience of TFGBV; LSV = Lifetime experience of sexual violence", color(gs8) size(vsmall)) ///
     name(combined_graphs, replace)	
 
 graph export "FIGURE1_COMBINED.png", replace width(4000)
